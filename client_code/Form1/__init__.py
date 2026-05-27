@@ -7,3 +7,4 @@ class Form1(Form1Template):
     super().__init__(**properties)
 
     # Any code you write here will run before the form opens.
+
