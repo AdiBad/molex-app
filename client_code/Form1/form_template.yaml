@@ -6,11 +6,11 @@ components:
     type: Label
   - layout_properties: {grid_position: 'CHTJFF,WOOELJ'}
     name: drop_down_1
-    properties: {bold: true, include_placeholder: true, placeholder: Perfume brand}
+    properties: {bold: true, font_size: 10, include_placeholder: true, placeholder: Perfume brand}
     type: DropDown
   - layout_properties: {grid_position: 'CHTJFF,TYMPWI'}
     name: drop_down_2
-    properties: {bold: true, include_placeholder: true, placeholder: Specific model}
+    properties: {bold: true, font_size: 10, include_placeholder: true, placeholder: Specific model}
     type: DropDown
   - layout_properties: {grid_position: 'TFQLET,IPXVAI'}
     name: outlined_button_1
@@ -35,7 +35,7 @@ components:
     type: RichText
   layout_properties: {slot: default}
   name: content_panel
-  properties: {col_widths: '{}'}
+  properties: {background: 'theme:Primary Container', col_widths: '{}'}
   type: ColumnPanel
 - layout_properties: {slot: nav-right}
   name: navbar_links
