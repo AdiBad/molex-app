@@ -1,51 +1,116 @@
 components:
-- components:
-  - layout_properties: {grid_position: 'CHTJFF,OXGEZO'}
-    name: label_1
-    properties: {text: Please select your preferred perfume}
-    type: Label
-  - layout_properties: {grid_position: 'CHTJFF,WOOELJ'}
-    name: drop_down_1
-    properties: {bold: true, font_size: 10, include_placeholder: true, placeholder: Perfume brand}
-    type: DropDown
-  - layout_properties: {grid_position: 'CHTJFF,TYMPWI'}
-    name: drop_down_2
-    properties: {bold: true, font_size: 10, include_placeholder: true, placeholder: Specific model}
-    type: DropDown
-  - layout_properties: {grid_position: 'TFQLET,IPXVAI'}
-    name: outlined_button_1
-    properties: {role: outlined-button, text: Identify best fragrances for me}
-    type: Button
-  - layout_properties: {grid_position: 'XEVVAF,DUUTLN'}
-    name: label_2
-    properties: {align: center, text: Known fragrance notes}
-    type: Label
-  - components: []
-    layout_properties: {grid_position: 'XEVVAF,WLRZXI'}
-    name: rich_text_2
-    properties: {}
-    type: RichText
-  - layout_properties: {grid_position: 'RAYLTA,HQHKTF'}
-    name: label_3
-    properties: {align: center, text: Closest perfume models}
-    type: Label
-  - layout_properties: {grid_position: 'RAYLTA,VVVRSL'}
-    name: rich_text_3
-    properties: {}
-    type: RichText
-  layout_properties: {slot: default}
-  name: content_panel
-  properties: {background: 'theme:Primary Container', col_widths: '{}'}
-  type: ColumnPanel
-- layout_properties: {slot: nav-right}
+- components: []
+  layout_properties: {slot: nav-right}
   name: navbar_links
   properties: {}
   type: FlowPanel
-- layout_properties: {slot: top-left-btn}
-  name: image_1
-  properties: {height: 60, source: _/theme/NOSEn-logo.png, visible: true}
-  type: Image
+- components: []
+  layout_properties: {slot: left-nav}
+  name: column_panel_2
+  properties: {}
+  type: ColumnPanel
+- components:
+  - components: []
+    layout_properties: {width: 200, x: 1031, y: 6}
+    name: xy_panel_4
+    properties: {foreground: 'theme:Secondary', height: 373}
+    type: XYPanel
+  - components:
+    - layout_properties: {width: 200, x: 0, y: 4.046875}
+      name: image_1
+      properties: {height: 257, source: _/theme/NOSEn-logo.png, visible: true}
+      type: Image
+    layout_properties: {width: 200, x: 0, y: 0}
+    name: xy_panel_5
+    properties: {height: 373}
+    type: XYPanel
+  - components:
+    - components:
+      - layout_properties: {grid_position: 'UXTLIZ,DXZGMU'}
+        name: label_4
+        properties: {align: center, foreground: 'theme:On Primary', text: Our AI finds the best perfumes for you based on your preferred fragrance notes.}
+        type: Label
+      layout_properties: {grid_position: 'OQEZUZ,HNOYUT'}
+      name: column_panel_1
+      properties: {}
+      type: ColumnPanel
+    - components:
+      - layout_properties: {width: 230.5, x: 219.046875, y: 40.046875}
+        name: drop_down_1
+        properties: {background: 'theme:On Primary', bold: true, font_size: 10, include_placeholder: true, placeholder: Perfume brand}
+        type: DropDown
+      - layout_properties: {width: 219, x: 484.046875, y: 40.046875}
+        name: drop_down_2
+        properties: {background: 'theme:On Primary', bold: true, font_size: 10, include_placeholder: true, placeholder: Specific model}
+        type: DropDown
+      - components: []
+        layout_properties: {width: 477, x: 309.046875, y: 182.046875}
+        name: rich_text_2
+        properties: {foreground: 'theme:On Surface'}
+        type: RichText
+      - layout_properties: {width: 477, x: 309.046875, y: 263.046875}
+        name: rich_text_3
+        properties: {foreground: 'theme:On Tertiary Container'}
+        type: RichText
+      - data_bindings:
+        - {code: '', property: font, writeback: false}
+        layout_properties: {width: 148.328125, x: 70.09375, y: 25.09375}
+        name: label_1
+        properties: {foreground: 'theme:On Primary', text: Please select your preferred perfume}
+        type: Label
+      - layout_properties: {width: 230.5, x: 33.09375, y: 184.09375}
+        name: label_2
+        properties: {align: center, foreground: 'theme:On Primary', text: Known fragrance notes}
+        type: Label
+      - layout_properties: {width: 230.5, x: 36.09375, y: 260.09375}
+        name: label_3
+        properties: {align: center, foreground: 'theme:On Primary', text: Closest perfume models}
+        type: Label
+      - layout_properties: {width: 477, x: 187.140625, y: 107.09375}
+        name: outlined_button_1
+        properties: {background: 'theme:On Primary', role: outlined-button, text: Identify best fragrances for me}
+        type: Button
+      layout_properties: {grid_position: 'EYRAGU,CXCOCP'}
+      name: xy_panel_1
+      properties: {height: 315}
+      type: XYPanel
+    - layout_properties: {grid_position: 'EIJRWR,LWSNZU'}
+      name: spacer_1
+      properties: {height: 67}
+      type: Spacer
+    - components:
+      - components:
+        - layout_properties: {width: 614, x: 117.5625, y: 110.046875}
+          name: repeating_panel_1
+          properties: {item_template: Form1.RowTemplate1}
+          type: RepeatingPanel
+        - components: []
+          layout_properties: {width: 614, x: 104.5625, y: 62.046875}
+          name: data_grid_1
+          properties:
+            columns:
+            - {data_key: column_1, id: JKSDUP, title: Perfume brand}
+            - {data_key: column_2, id: VJQQOR, title: Specific model}
+            - {data_key: column_3, expand: false, id: OJLQEN, title: Top identified chemical identifiers, width: 258}
+            visible: false
+          type: DataGrid
+        layout_properties: {grid_position: 'MNCTQG,TKUYBQ'}
+        name: xy_panel_2
+        properties: {height: 315}
+        type: XYPanel
+      layout_properties: {grid_position: 'QPYXAZ,LMBDSM'}
+      name: content_panel_2
+      properties: {background: '#008f8a', col_widths: '{}'}
+      type: ColumnPanel
+    layout_properties: {width: 798.5156250000001, x: 222.484375, y: 0}
+    name: content_panel
+    properties: {background: '#008f8a', col_widths: '{"DFOTVJ":50}'}
+    type: ColumnPanel
+  layout_properties: {slot: default}
+  name: xy_panel_3
+  properties: {height: 835}
+  type: XYPanel
 container:
-  properties: {html: '@theme:standard-page.html'}
+  properties: {background: 'theme:On Primary', html: '@theme:standard-page.html'}
   type: HtmlTemplate
 is_package: true

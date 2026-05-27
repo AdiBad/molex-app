@@ -1,10 +1,12 @@
 unique_ids:
   assets:
+    NOSEn-logo-logo.png: '1779890778599944459401847.5249'
     NOSEn-logo.png: '1779841326141472257114065.6955'
     standard-page.html: 3NR5AQ5AZHNV3D5P5G75MSCIAYBQRSQT
     theme.css: SSX5OCEK6PVSSK7X2GE6NETDQJY5C3S5
   forms:
     Form1: OOPKOTJ64EHJ2H7PRHISNNMT2FDHGAOI
+    Form1.RowTemplate1: '177989186952355843680831.429436'
   modules: {}
   scripts: {}
   server_modules: {}
