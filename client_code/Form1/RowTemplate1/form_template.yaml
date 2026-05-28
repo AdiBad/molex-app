@@ -1,3 +1,7 @@
 components: []
-container: {type: DataRowPanel}
+container:
+  data_bindings:
+  - {code: 'self.item['''']', property: role, writeback: false}
+  properties: {role: null}
+  type: DataRowPanel
 is_package: true

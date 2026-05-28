@@ -11,6 +11,10 @@ db_schema:
       client_hidden: false
       name: model
       type: string
+    - admin_ui: {order: 2, width: 200}
+      client_hidden: false
+      name: identified notes
+      type: string
     indexes: []
     server: search
     title: perfumes

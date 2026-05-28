@@ -86,14 +86,19 @@ components:
           name: repeating_panel_1
           properties: {item_template: Form1.RowTemplate1}
           type: RepeatingPanel
-        - components: []
+        - components:
+          - layout_properties: {}
+            name: repeating_panel_2
+            properties: {item_template: null}
+            type: RepeatingPanel
           layout_properties: {width: 614, x: 104.5625, y: 62.046875}
           name: data_grid_1
           properties:
             columns:
-            - {data_key: column_1, id: JKSDUP, title: Perfume brand}
+            - {data_key: column_1, expand: false, id: JKSDUP, title: Perfume brand}
             - {data_key: column_2, id: VJQQOR, title: Specific model}
             - {data_key: column_3, expand: false, id: OJLQEN, title: Top identified chemical identifiers, width: 258}
+            rows_per_page: 1
             visible: false
             wrap_on: mobile
           type: DataGrid
