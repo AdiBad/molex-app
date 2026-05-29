@@ -1,4 +1,5 @@
 allow_embedding: false
+db_schema: {}
 dependencies: []
 metadata: {description: Let the fragrances you like find you first, logo_img: 'asset:NOSEn-logo-logo.png', title: nosen | scent AI}
 name: nosen

@@ -1,3 +1,52 @@
-components: []
-container: {type: DataRowPanel}
+components:
+- components:
+  - layout_properties: {}
+    name: label_5
+    properties: {background: 'theme:On Background', foreground: 'theme:Secondary Container', text: Perfume brand}
+    type: Label
+  - layout_properties: {}
+    name: label_6
+    properties: {foreground: 'theme:Primary Container'}
+    type: Label
+  - layout_properties: {}
+    name: label_7
+    properties: {background: 'theme:On Background', foreground: 'theme:Primary Container', text: Model}
+    type: Label
+  - layout_properties: {}
+    name: label_8
+    properties: {foreground: 'theme:Primary Container'}
+    type: Label
+  - layout_properties: {}
+    name: label_9
+    properties: {background: 'theme:On Background', foreground: 'theme:Primary Container', text: Similarity score}
+    type: Label
+  - layout_properties: {}
+    name: label_10
+    properties: {foreground: 'theme:Primary Container'}
+    type: Label
+  layout_properties: {}
+  name: flow_panel_1
+  properties: {}
+  type: FlowPanel
+- components:
+  - layout_properties: {}
+    name: label_11
+    properties: {background: 'theme:On Background', foreground: 'theme:Primary Container', text: Chemical identifiers}
+    type: Label
+  - layout_properties: {width: 575}
+    name: text_box_1
+    properties: {}
+    type: TextBox
+  layout_properties: {column: 'null'}
+  name: flow_panel_2
+  properties: {}
+  type: FlowPanel
+- layout_properties: {column: 'null'}
+  name: spacer_1
+  properties: {height: 32}
+  type: Spacer
+container:
+  data_bindings: []
+  properties: {align: right, visible: true}
+  type: DataRowPanel
 is_package: true
