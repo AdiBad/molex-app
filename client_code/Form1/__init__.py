@@ -9,15 +9,15 @@ class Form1(Form1Template):
     super().__init__(**properties)
 
     # Any code you write here will run before the form opens.
-    rows = app_tables.perfumes.search()
+    rows = app_tables.chemical_notes.search()
 
     # Create dropdown items
-    self.drop_down_1.items = [
-      (row['brand'], row) for row in rows
-    ]
-    self.drop_down_2.items = [
-      (row['model'], row) for row in rows
-    ]
+    self.drop_down_1.items = set([
+      row['brand'] for row in rows
+    ])
+    self.drop_down_2.items = set([
+      row['model'] for row in rows
+    ])
     self.repeating_panel_1.visible=False
 
 
@@ -26,7 +26,7 @@ class Form1(Form1Template):
 
   @handle("outlined_button_1", "click")
   def outlined_button_1_click(self, **event_args):
-    perfume_name = f'{self.drop_down_1.selected_value}{self.drop_down_2.selected_value}'
+    perfume_name = self.drop_down_2.selected_value
     perfume_name = self.clean_perfume_name(perfume_name)
 
     chemical_notes = app_tables.chemical_notes.search()
@@ -40,7 +40,7 @@ class Form1(Form1Template):
 
     if target_perfume is None:
       # Fallback if selected perfume is missing from database
-      self.best_match_perfume.content = "Perfume not found"
+      self.best_match_perfume.content = f"Perfume {perfume_name} not found"
       self.best_match_perfume.visible=True
       return
 
@@ -51,17 +51,23 @@ class Form1(Form1Template):
     best_score = float('-inf')
     best_match_name = None
     best_match_data = None
-
+    results_list=[]
     for name, data in embeddings.items():
       if name == perfume_name:
         continue  # Skip the selected perfume itself
 
         # Parse the text string for the current perfume in the loop
-      current_text_vector = data['embedding_vector']
+      current_text_vector = data['embedding']
       current_vector = [float(x) for x in current_text_vector.split()]
         
         # 3. Calculate dot product in pure Python
       dot_product = sum(a * b for a, b in zip(target_vector, current_vector))
+      results_list.append({
+        'brand': data.get('brand', ''),
+        'model': data.get('model', ''),
+        'score': round(dot_product, 2),
+        'description': data.get('description', '')
+      })
         
         # 4. Track the highest score
       if dot_product > best_score:
@@ -71,10 +77,16 @@ class Form1(Form1Template):
 
     # 5. Assign the results back to your UI elements
     if best_match_data is not None:
-        self.best_match_perfume.content = best_match_name
-        self.description.content = best_match_data.get(
-          'Description', 'No description available')
-        self.top_notes.content = ''
+      # Use app_tables.your_table_name.get() to find the single matching row
+      # Replace 'chemical_notes' with your actual app_tables name if it is different
+      best_match = app_tables.chemical_notes.get(perfume_lower=best_match_name)
+
+      # Check if a matching row was actually found to prevent errors
+      if best_match is not None:
+        # Access column values using dictionary-style bracket notation
+        self.best_match_perfume.content = f"{best_match['brand']} {best_match['model']}"
+        self.description.content = best_match['description']
+        self.top_notes.content = best_match['chemical_notes']
 
     
     self.best_match_perfume.visible=True
@@ -83,12 +95,10 @@ class Form1(Form1Template):
 
     # populate chemical notes
     
-    """
-    top_notes = pd.read_csv('perfume_top_notes.csv', index_col=0, 
-                            header=None, encoding='utf-8')
     self.repeating_panel_1.visible=True
-    self.repeating_panel_1.items = app_tables.chemical_notes.search()
-    """
+    results_list.sort(key=lambda x: x['score'], reverse=True)
+    self.repeating_panel_1.items = results_list
+    
 
 
 
