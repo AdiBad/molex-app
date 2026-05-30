@@ -20,7 +20,8 @@ components:
       properties: {}
       type: ColumnPanel
     - components:
-      - layout_properties: {width: 230.5, x: 219.046875, y: 40.046875}
+      - data_bindings: []
+        layout_properties: {width: 230.5, x: 219.046875, y: 40.046875}
         name: drop_down_1
         properties: {background: 'theme:On Primary', bold: true, font_size: 10, include_placeholder: true, placeholder: Perfume brand}
         type: DropDown
@@ -40,16 +41,16 @@ components:
         type: Button
       - layout_properties: {width: 393.96875, x: 319.125, y: 177.125}
         name: best_match_perfume
-        properties: {background: 'theme:Background', content: '', foreground: 'theme:On Tertiary Container', visible: true}
+        properties: {background: 'theme:Background', content: '', foreground: 'theme:On Tertiary Container', visible: false}
         type: RichText
       - components: []
         layout_properties: {width: 393.984375, x: 320.140625, y: 238.140625}
         name: description
-        properties: {background: 'theme:On Background', content: '', foreground: 'theme:On Tertiary', visible: true}
+        properties: {background: 'theme:On Background', content: '', foreground: 'theme:On Tertiary', visible: false}
         type: RichText
       - layout_properties: {width: 397.484375, x: 319.734375, y: 292.546875}
         name: rich_text_1
-        properties: {background: 'theme:On Secondary Container', content: top_notes, foreground: 'theme:Primary Container'}
+        properties: {background: 'theme:On Secondary Container', content: top_notes, foreground: 'theme:Primary Container', visible: false}
         type: RichText
       - layout_properties: {width: 161.90625, x: 107.1875, y: 239.1875}
         name: label_2

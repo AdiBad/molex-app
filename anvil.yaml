@@ -84,7 +84,9 @@ renamed: true
 runtime_options:
   client_version: '3'
   legacy_features: {bootstrap3: false, class_names: false}
-  server_spec: {base: python310-machine-learning}
+  server_spec: {base: python310-standard}
+  server_spec_disabled: {base: python310-standard, requirements: pandas==2.3.1}
+  server_version: python3-sandbox
   version: 3
 services:
 - client_config: {enable_v2: false}
