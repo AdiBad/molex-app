@@ -28,5 +28,6 @@ class Form1(Form1Template):
     self.rich_text_3.visible=True
     self.repeating_panel_1.visible=True
     self.repeating_panel_1.items = app_tables.chemical_notes.search()
+    
 
 
