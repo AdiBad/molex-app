@@ -31,7 +31,7 @@ components:
 - components:
   - layout_properties: {}
     name: label_11
-    properties: {background: 'theme:On Background', foreground: 'theme:Primary Container', text: Chemical identifiers}
+    properties: {background: 'theme:On Background', foreground: 'theme:Primary Container', text: Description}
     type: Label
   - layout_properties: {width: 575}
     name: text_box_1
