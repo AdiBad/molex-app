@@ -13,11 +13,11 @@ components:
   - components:
     - layout_properties: {width: 200, x: 0, y: 4.046875}
       name: image_1
-      properties: {height: 257, source: _/theme/NOSEn-logo.png, visible: true}
+      properties: {height: 343.5, source: _/theme/molex-logo.png, visible: true}
       type: Image
     layout_properties: {width: 200, x: 0, y: 0}
     name: xy_panel_5
-    properties: {height: 373}
+    properties: {background: '#000000', height: 373}
     type: XYPanel
   - components:
     - components:
@@ -92,7 +92,7 @@ components:
     type: ColumnPanel
   layout_properties: {slot: default}
   name: xy_panel_3
-  properties: {height: 835}
+  properties: {background: '#000', height: 896.4999389648438}
   type: XYPanel
 container:
   properties: {background: 'theme:On Primary', html: '@theme:standard-page.html'}

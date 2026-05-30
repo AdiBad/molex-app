@@ -1,9 +1,73 @@
 allow_embedding: false
-db_schema: {}
+db_schema:
+  chemical_notes:
+    client: search
+    columns:
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: brand
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: model
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: chemical_notes
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: similarity
+      type: number
+    indexes: []
+    server: full
+    title: chemical_notes
+  files:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      client_hidden: false
+      name: path
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      client_hidden: false
+      name: file
+      type: media
+    - admin_ui: {order: 2, width: 200}
+      client_hidden: false
+      name: file_version
+      type: string
+    indexes: []
+    server: full
+    title: Files
+  perfumes:
+    client: search
+    columns:
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: brand
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: model
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: identified notes
+      type: string
+    indexes: []
+    server: search
+    title: perfumes
+  table_3:
+    client: none
+    columns: []
+    indexes: []
+    server: full
+    title: Table 3
 dependencies: []
-metadata: {description: Let the fragrances you like find you first, logo_img: 'asset:NOSEn-logo-logo.png', title: nosen | scent AI}
-name: nosen
-package_name: nosen
+metadata: {description: Let the fragrances you like find you first, logo_img: 'asset:molex-logo.png', title: MOLEx | scent AI}
+name: MOLEx
+package_name: MOLEx
 renamed: true
 runtime_options:
   client_version: '3'
@@ -14,4 +78,7 @@ services:
 - client_config: {enable_v2: false}
   server_config: {auto_create_missing_columns: true}
   source: /runtime/services/tables.yml
+- client_config: {}
+  server_config: {file_table: files}
+  source: /runtime/services/anvil/files.yml
 startup_form: Form1
