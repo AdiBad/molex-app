@@ -45,7 +45,7 @@ components:
         type: Label
       - layout_properties: {width: 230.5, x: 33.09375, y: 184.09375}
         name: label_2
-        properties: {align: center, foreground: 'theme:On Primary', text: Selected fragrance notes}
+        properties: {align: center, foreground: 'theme:On Primary', text: Descriptive labels}
         type: Label
       - layout_properties: {width: 230.5, x: 36.09375, y: 260.09375}
         name: label_3
