@@ -28,36 +28,44 @@ components:
         name: drop_down_2
         properties: {background: 'theme:On Primary', bold: true, font_size: 10, include_placeholder: true, placeholder: Specific model}
         type: DropDown
-      - components: []
-        layout_properties: {width: 393.9970000000001, x: 309.046875, y: 182.046875}
-        name: rich_text_2
-        properties: {background: 'theme:On Background', content: 'bergamot, turpenic, green, cool spices', foreground: 'theme:On Tertiary', visible: false}
-        type: RichText
-      - layout_properties: {width: 393.984, x: 309.046875, y: 263.046875}
-        name: rich_text_3
-        properties: {background: 'theme:Background', content: Amouage Orris Wakan, foreground: 'theme:On Tertiary Container', visible: false}
-        type: RichText
       - data_bindings:
         - {code: '', property: font, writeback: false}
         layout_properties: {width: 148.328125, x: 70.09375, y: 25.09375}
         name: label_1
         properties: {foreground: 'theme:On Primary', text: Please select your preferred perfume}
         type: Label
-      - layout_properties: {width: 230.5, x: 33.09375, y: 184.09375}
-        name: label_2
-        properties: {align: center, foreground: 'theme:On Primary', text: Descriptive labels}
-        type: Label
-      - layout_properties: {width: 230.5, x: 36.09375, y: 260.09375}
-        name: label_3
-        properties: {align: center, foreground: 'theme:On Primary', text: Closest perfume model}
-        type: Label
       - layout_properties: {width: 477, x: 187.140625, y: 107.09375}
         name: outlined_button_1
         properties: {background: 'theme:On Primary', role: outlined-button, text: Identify best fragrances for me}
         type: Button
-      layout_properties: {grid_position: 'EYRAGU,CXCOCP'}
+      - layout_properties: {width: 393.96875, x: 319.125, y: 177.125}
+        name: best_match_perfume
+        properties: {background: 'theme:Background', content: '', foreground: 'theme:On Tertiary Container', visible: true}
+        type: RichText
+      - components: []
+        layout_properties: {width: 393.984375, x: 320.140625, y: 238.140625}
+        name: description
+        properties: {background: 'theme:On Background', content: '', foreground: 'theme:On Tertiary', visible: true}
+        type: RichText
+      - layout_properties: {width: 397.484375, x: 319.734375, y: 292.546875}
+        name: rich_text_1
+        properties: {background: 'theme:On Secondary Container', content: top_notes, foreground: 'theme:Primary Container'}
+        type: RichText
+      - layout_properties: {width: 161.90625, x: 107.1875, y: 239.1875}
+        name: label_2
+        properties: {align: center, foreground: 'theme:On Primary', text: Descriptive labels}
+        type: Label
+      - layout_properties: {width: 72, x: 180.875, y: 279.6874694824219}
+        name: label_5
+        properties: {foreground: 'theme:Primary Container', text: Top notes}
+        type: Label
+      - layout_properties: {width: 230.5, x: 55.312530517578125, y: 189.3125}
+        name: label_3
+        properties: {align: center, foreground: 'theme:On Primary', text: Closest perfume model}
+        type: Label
+      layout_properties: {grid_position: 'FYJXSS,YZIFYT'}
       name: xy_panel_1
-      properties: {height: 315}
+      properties: {height: 351.5}
       type: XYPanel
     - layout_properties: {grid_position: 'HMYEEC,IJKTIT'}
       name: spacer_1
