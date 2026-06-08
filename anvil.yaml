@@ -32,7 +32,7 @@ db_schema:
       name: perfume_lower
       type: string
     indexes: []
-    server: full
+    server: search
     title: chemical_notes
   files:
     client: none
@@ -52,30 +52,6 @@ db_schema:
     indexes: []
     server: full
     title: Files
-  perfumes:
-    client: search
-    columns:
-    - admin_ui: {width: 200}
-      client_hidden: false
-      name: brand
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: false
-      name: model
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: false
-      name: identified notes
-      type: string
-    indexes: []
-    server: search
-    title: perfumes
-  table_3:
-    client: none
-    columns: []
-    indexes: []
-    server: full
-    title: Table 3
 dependencies: []
 metadata: {description: Let the fragrances you like find you first, logo_img: 'asset:molex-logo.png', title: MOLEx | scent AI}
 name: MOLEx
