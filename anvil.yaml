@@ -50,10 +50,10 @@ db_schema:
       name: file_version
       type: string
     indexes: []
-    server: full
+    server: search
     title: Files
 dependencies: []
-metadata: {description: Let the fragrances you like find you first, logo_img: 'asset:molex-logo.png', title: MOLEx | scent AI}
+metadata: {description: Let the fragrances you like find you first, logo_img: 'asset:molex-logo-browser-icon.png', title: MOLEx | scent AI}
 name: MOLEx
 package_name: MOLEx
 renamed: true

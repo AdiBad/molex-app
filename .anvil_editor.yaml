@@ -2,6 +2,7 @@ unique_ids:
   assets:
     NOSEn-logo-logo.png: '1779890778599944459401847.5249'
     NOSEn-logo.png: '1779841326141472257114065.6955'
+    molex-logo-browser-icon.png: '1781127502974179525929439.91928'
     molex-logo.png: '1780154660915423850010327.09326'
     standard-page.html: 3NR5AQ5AZHNV3D5P5G75MSCIAYBQRSQT
     theme.css: SSX5OCEK6PVSSK7X2GE6NETDQJY5C3S5
@@ -12,4 +13,4 @@ unique_ids:
   modules: {}
   scripts: {}
   server_modules:
-    dot_product: '1781046912710163956175143.94156'
+    accessory: '1781046912710163956175143.94156'

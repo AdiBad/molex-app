@@ -5,6 +5,10 @@ components:
       name: image_1
       properties: {height: 343.5, source: _/theme/molex-logo.png, visible: true}
       type: Image
+    - layout_properties: {width: 200, x: 0, y: 338.8611030578613}
+      name: label_7
+      properties: {align: center, background: 'theme:Primary', font_size: 12, foreground: 'theme:Primary Container', text: Higher similarity scores reflect higher confidence in recommendation.}
+      type: Label
     layout_properties: {width: 200, x: 0, y: 0}
     name: xy_panel_5
     properties: {background: '#000000', height: 373}
@@ -13,7 +17,7 @@ components:
     - components:
       - layout_properties: {grid_position: 'UXTLIZ,DXZGMU'}
         name: label_4
-        properties: {align: center, foreground: 'theme:On Primary', text: Our AI finds the best perfumes for you based on your preferred fragrance notes.}
+        properties: {align: center, border: brown, foreground: 'theme:On Primary', text: Our AI finds the best perfumes for you based on your preferred fragrance notes.}
         type: Label
       layout_properties: {grid_position: 'OQEZUZ,HNOYUT'}
       name: column_panel_1
@@ -39,42 +43,57 @@ components:
         name: outlined_button_1
         properties: {background: 'theme:On Primary', role: outlined-button, text: Identify best fragrances for me}
         type: Button
-      - layout_properties: {width: 384, x: 319.125, y: 177.125}
-        name: best_match_perfume
-        properties: {background: 'theme:Background', content: '', foreground: 'theme:On Tertiary Container', visible: false}
-        type: RichText
-      - components: []
-        layout_properties: {width: 382.91668701171875, x: 320.140625, y: 238.140625}
-        name: description
-        properties: {background: 'theme:On Background', content: '', font_size: 12, foreground: 'theme:On Tertiary', visible: false}
-        type: RichText
-      - layout_properties: {width: 161.90625, x: 107.1875, y: 239.1875}
-        name: label_2
-        properties: {align: center, foreground: 'theme:On Primary', text: Descriptive labels}
-        type: Label
-      - layout_properties: {width: 230.5, x: 55.312530517578125, y: 189.3125}
+      - layout_properties: {width: 145.30555725097656, x: 84.63889567181468, y: 176.56944910809398}
         name: label_3
         properties: {align: center, foreground: 'theme:On Primary', text: Closest perfume model}
         type: Label
-      - layout_properties: {width: 397.47222900390625, x: 319.7638956718147, y: 355.6666564941406}
-        name: top_notes
-        properties: {background: 'theme:On Secondary Container', content: top_notes, font_size: 10, foreground: 'theme:Primary Container', visible: false}
-        type: RichText
-      - layout_properties: {width: 72, x: 171.19443766400218, y: 383.6666564941406}
+      - components: []
+        layout_properties: {width: 582.0833129882812, x: 83.9305521659553, y: 372.2916326522827}
+        name: flow_panel_1
+        properties: {}
+        type: FlowPanel
+      - layout_properties: {width: 109.69444274902344, x: 89.16666666790843, y: 288.68054580688477}
+        name: label_2
+        properties: {align: center, foreground: 'theme:On Primary', text: Descriptive labels}
+        type: Label
+      - layout_properties: {width: 136.93055725097656, x: 88.38886515423656, y: 231.23611068725586}
+        name: label_6
+        properties: {foreground: 'theme:Primary Container', text: Similarity score}
+        type: Label
+      - layout_properties: {width: 61.9444465637207, x: 92.87497965618968, y: 370.1388969421387}
         name: label_5
         properties: {foreground: 'theme:Primary Container', text: Top notes}
         type: Label
-      layout_properties: {grid_position: 'FYJXSS,YZIFYT'}
+      - layout_properties: {width: 272.8887099609375, x: 367.1388956718147, y: 369.0138969421387}
+        name: top_notes
+        properties: {background: 'theme:On Secondary Container', content: top_notes, font_size: 10, foreground: 'theme:Primary Container', visible: false}
+        type: RichText
+      - components: []
+        layout_properties: {width: 280.65277099609375, x: 364.95829264447093, y: 288.7638969421387}
+        name: description
+        properties: {background: 'theme:On Background', content: '', font_size: 12, foreground: 'theme:On Tertiary', visible: false}
+        type: RichText
+      - components: []
+        data_bindings: []
+        layout_properties: {width: 294.2083435058594, x: 356.0138956718147, y: 159.7500101737678}
+        name: best_match_perfume
+        properties: {background: 'theme:Background', content: '', foreground: 'theme:On Tertiary Container', role: null, visible: false}
+        type: RichText
+      - layout_properties: {width: 279.75, x: 358.8194376640022, y: 227.79166666790843}
+        name: score
+        properties: {background: 'theme:On Secondary Container', font_size: 12, foreground: 'theme:Primary Container', role: null, visible: false}
+        type: TextBox
+      layout_properties: {grid_position: 'VYVUCA,DCUDHO'}
       name: xy_panel_1
-      properties: {height: 417.6666564941406}
+      properties: {height: 478.77777099609375}
       type: XYPanel
-    - layout_properties: {grid_position: 'HMYEEC,IJKTIT'}
+    - layout_properties: {grid_position: 'ODLRYI,BOSLCB'}
       name: spacer_1
-      properties: {height: 21.25}
+      properties: {height: 21}
       type: Spacer
     - layout_properties: {grid_position: 'VUOOAK,SVYHYJ'}
       name: outlined_1
-      properties: {align: center, bold: true, foreground: 'theme:On Primary', role: outlined, text: More information}
+      properties: {align: center, bold: true, enabled: false, foreground: 'theme:On Primary', role: outlined, text: More information}
       type: TextBox
     - components:
       - layout_properties: {grid_position: 'DMQMHG,ZVGFZI'}
@@ -91,7 +110,7 @@ components:
     type: ColumnPanel
   layout_properties: {slot: default}
   name: xy_panel_3
-  properties: {background: '#000', height: 896.4999389648438}
+  properties: {background: '#000', height: 1403.3333282470703}
   type: XYPanel
 container:
   properties: {background: 'theme:On Primary', html: '@theme:standard-page.html', visible: true}
