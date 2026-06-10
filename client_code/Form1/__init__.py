@@ -1,5 +1,6 @@
 from ._anvil_designer import Form1Template
 from anvil import *
+import anvil.server
 from anvil.tables import app_tables
 
 
@@ -26,9 +27,6 @@ class Form1(Form1Template):
 
   @handle("outlined_button_1", "click")
   def outlined_button_1_click(self, **event_args):
-    import pandas as pd
-    a = pd.DataFrame({})
-    print(a)
     perfume_name = self.drop_down_2.selected_value
     perfume_name = self.clean_perfume_name(perfume_name)
 

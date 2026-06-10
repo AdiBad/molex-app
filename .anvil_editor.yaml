@@ -8,9 +8,8 @@ unique_ids:
   forms:
     Form1: OOPKOTJ64EHJ2H7PRHISNNMT2FDHGAOI
     Form1.Form2: '1780155408092232703256553.504'
-    Form1.ItemTemplate1: '1780012186805319557389888.9339'
-    Form1.ItemTemplate2: '1780014254646314942696299.4798'
     Form1.RowTemplate1: '177989186952355843680831.429436'
   modules: {}
   scripts: {}
-  server_modules: {}
+  server_modules:
+    dot_product: '1781046912710163956175143.94156'
