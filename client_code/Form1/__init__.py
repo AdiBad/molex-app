@@ -73,6 +73,7 @@ class Form1(Form1Template):
   def _hide_results(self):
 
     self.repeating_panel_1.visible = False
+    self.repeating_panel_1.items = []
     self.xy_panel_1.visible = False
     self.content_panel_2.visible = False
     self.best_match_perfume.visible = False
@@ -80,6 +81,12 @@ class Form1(Form1Template):
     self.top_notes.visible = False
     self.score.visible = False
     self.purchase_link.visible = False
+
+    self.best_match_perfume.content = ""
+    self.description.content = ""
+    self.top_notes.content = ""
+    self.score.text = ""
+    self.purchase_link.url = ""
 
     # --------------------------------------------------------
     # PERFUME SIMILARITY SEARCH

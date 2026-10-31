@@ -1261,28 +1261,22 @@ input.anvil-role-molex-match-score {
 }
 
 .anvil-role-molex-product-visual {
-  align-self: stretch;
-  height: 100%;
-}
-
-.anvil-role-molex-product-visual > .flow-panel-gutter {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+  margin-top: clamp(80px, 20vh, 155px);
+  text-align: center;
 }
 
 .anvil-role-molex-match-image img {
   display: block;
   width: min(100%, 210px);
   max-height: 260px;
+  margin: 0 auto;
   object-fit: contain;
 }
 
 .anvil-role-molex-purchase-link,
 .anvil-role-molex-purchase-link a {
+  display: inline-block;
+  margin-top: 8px;
   color: var(--molex-amber-dark);
   font-size: 12px;
   font-weight: 600;
@@ -1431,6 +1425,10 @@ textarea.anvil-role-molex-recommendation-copy:focus {
 
   .anvil-role-molex-fragrance-select select {
     min-height: 52px;
+  }
+
+  .anvil-role-molex-product-visual {
+    margin-top: 20px;
   }
 
   .anvil-role-primary-action,
