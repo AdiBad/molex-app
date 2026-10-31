@@ -1,35 +1,74 @@
 allow_embedding: false
 db_schema:
-  perfumes:
+  chemical_notes:
+    client: search
+    columns:
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: brand
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: model
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: chemical_notes
+      type: string
+    - admin_ui: {order: 6, width: 200}
+      client_hidden: false
+      name: similarity
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      client_hidden: false
+      name: description
+      type: string
+    - admin_ui: {order: 5, width: 200}
+      client_hidden: false
+      name: embedding
+      type: string
+    - admin_ui: {order: 7, width: 200}
+      client_hidden: false
+      name: perfume_lower
+      type: string
+    indexes: []
+    server: search
+    title: chemical_notes
+  files:
     client: none
     columns:
     - admin_ui: {order: 0, width: 200}
       client_hidden: false
-      name: brand
+      name: path
       type: string
     - admin_ui: {order: 1, width: 200}
       client_hidden: false
-      name: model
-      type: string
+      name: file
+      type: media
     - admin_ui: {order: 2, width: 200}
       client_hidden: false
-      name: identified notes
+      name: file_version
       type: string
     indexes: []
     server: search
-    title: perfumes
+    title: Files
 dependencies: []
-metadata: {description: Let the fragrances you like find you first, logo_img: 'asset:NOSEn-logo-logo.png', title: nosen | scent AI}
-name: nosen
-package_name: nosen
+metadata: {description: Let the fragrances you like find you first, logo_img: 'asset:molex-logo-browser-icon.png', title: MOLEx | scent AI}
+name: MOLEx
+package_name: MOLEx
 renamed: true
 runtime_options:
   client_version: '3'
-  legacy_features: {bootstrap3: true, class_names: true}
-  server_spec: {base: python310-minimal}
+  legacy_features: {bootstrap3: false, class_names: false}
+  server_spec: {base: python310-standard}
+  server_spec_disabled: {base: python310-standard, requirements: pandas==2.3.1}
+  server_version: python3-sandbox
   version: 3
 services:
 - client_config: {enable_v2: false}
   server_config: {auto_create_missing_columns: true}
   source: /runtime/services/tables.yml
+- client_config: {}
+  server_config: {file_table: files}
+  source: /runtime/services/anvil/files.yml
 startup_form: Form1

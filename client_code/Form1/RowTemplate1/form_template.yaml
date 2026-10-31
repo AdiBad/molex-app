@@ -1,6 +1,0 @@
-components: []
-container:
-  data_bindings: []
-  properties: {role: null}
-  type: DataRowPanel
-is_package: true

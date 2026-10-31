@@ -1,0 +1,40 @@
+<anvil-form container="HtmlTemplate" prop:background="theme:Background" prop:html="@theme:standard-page.html" prop:visible="true">
+  <anvil-component type="ColumnPanel" name="xy_panel_3" prop:background="theme:Background" prop:role="molex-page" container:slot="default">
+    <anvil-component type="FlowPanel" name="xy_panel_5" prop:role="molex-brandbar">
+      <anvil-component type="Image" name="image_1" prop:height="44" prop:source="_/theme/molex-logo-browser-icon.png" prop:role="brand-mark"></anvil-component>
+      <anvil-component type="Label" name="label_7" prop:text="MOLEx" prop:role="brand-wordmark"></anvil-component>
+    </anvil-component>
+    <anvil-component type="ColumnPanel" name="content_panel" prop:role="molex-content">
+      <anvil-component type="ColumnPanel" name="column_panel_1" prop:role="molex-intro">
+        <anvil-component type="Label" name="label_4" prop:text="Fragrance discovery, grounded in chemistry." prop:role="molex-headline"></anvil-component>
+      </anvil-component>
+      <anvil-component type="ColumnPanel" name="search_card" prop:role="molex-search-card">
+        <anvil-component type="Label" name="label_1" prop:text="Begin with a fragrance you already love" prop:role="molex-prompt"></anvil-component>
+        <anvil-component type="FlowPanel" name="flow_panel_1" prop:role="molex-search-controls">
+          <anvil-component type="DropDown" name="drop_down_1" prop:background="theme:Surface" prop:include_placeholder="true" prop:placeholder="Select a brand" prop:role="molex-fragrance-select"></anvil-component>
+          <anvil-component type="DropDown" name="drop_down_2" prop:background="theme:Surface" prop:include_placeholder="true" prop:placeholder="Select a fragrance" prop:role="molex-fragrance-select"></anvil-component>
+        </anvil-component>
+        <anvil-component type="Button" name="outlined_button_1" prop:role="primary-action" prop:text="Find similar fragrances"></anvil-component>
+      </anvil-component>
+      <anvil-component type="ColumnPanel" name="xy_panel_1" prop:role="molex-best-match">
+        <anvil-component type="Label" name="label_3" prop:text="Your closest match" prop:role="molex-eyebrow" container:grid_position="NHBOOE,KIRBEG "></anvil-component>
+        <anvil-component type="RichText" name="best_match_perfume" prop:content="" prop:role="molex-match-name" prop:visible="false" container:grid_position="NHBOOE,KIRBEG "></anvil-component>
+        <anvil-component type="Label" name="label_6" prop:text="Similarity score" prop:role="molex-score-label" container:grid_position="NHBOOE,KIRBEG "></anvil-component>
+        <anvil-component type="TextBox" name="score" prop:background="theme:Surface" prop:enabled="false" prop:role="molex-match-score" prop:visible="false" container:grid_position="NHBOOE,KIRBEG "></anvil-component>
+        <anvil-component type="Label" name="label_2" prop:text="Fragrance profile" prop:role="molex-detail-label" container:grid_position="NHBOOE,KIRBEG "></anvil-component>
+        <anvil-component type="RichText" name="description" prop:content="" prop:role="molex-match-description" prop:visible="false" container:grid_position="NHBOOE,KIRBEG FNZGJO,DLXDTD"></anvil-component>
+        <anvil-component type="Label" name="label_5" prop:text="Top notes" prop:role="molex-detail-label" container:grid_position="NHBOOE,KIRBEG "></anvil-component>
+        <anvil-component type="RichText" name="top_notes" prop:content="top_notes" prop:role="molex-match-notes" prop:visible="false" container:grid_position="NHBOOE,KIRBEG "></anvil-component>
+        <anvil-component type="ColumnPanel" name="product_visual" prop:role="molex-product-visual" container:grid_position="NHBOOE,PDDHGC">
+          <anvil-component type="Image" name="best_match_image" prop:role="molex-match-image"></anvil-component>
+          <anvil-component type="Link" name="purchase_link" prop:role="molex-purchase-link" prop:text="Click to Purchase" prop:visible="false" prop:underline="false" prop:background="theme:Tertiary"></anvil-component>
+        </anvil-component>
+      </anvil-component>
+      <anvil-component type="Spacer" name="spacer_1" prop:height="24"></anvil-component>
+      <anvil-component type="ColumnPanel" name="content_panel_2" prop:role="molex-recommendations">
+        <anvil-component type="TextBox" name="outlined_1" prop:align="left" prop:enabled="false" prop:role="molex-section-heading" prop:text="Similar fragrances"></anvil-component>
+        <anvil-component type="RepeatingPanel" name="repeating_panel_1" prop:item_template="MOLEx.Form1.RowTemplate1" prop:role="molex-recommendation-grid"></anvil-component>
+      </anvil-component>
+    </anvil-component>
+  </anvil-component>
+</anvil-form>
