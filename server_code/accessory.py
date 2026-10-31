@@ -1,48 +1,178 @@
-import anvil.files
-from anvil.files import data_files
-import anvil.tables as tables
-import anvil.tables.query as q
-from anvil.tables import app_tables
+
 import anvil.server
+from anvil.files import data_files
 
 import pandas as pd
+import numpy as np
+from functools import lru_cache
+
+
+# ============================================================
+# DATA LOADING — CACHED PER SERVER WORKER
+# ============================================================
+
+@lru_cache(maxsize=1)
+def load_perfumes():
+
+  df = pd.read_csv(
+    data_files['perfume_brand_model.csv']
+  )
+
+  # Index metadata by fragrance ID
+  indexed = df.copy()
+  indexed['fraterwork_ID'] = indexed['fraterwork_ID'].astype(str)
+  indexed = indexed.set_index('fraterwork_ID', drop=False)
+
+  return df, indexed
+
+
+@lru_cache(maxsize=1)
+@lru_cache(maxsize=1)
+def load_embeddings():
+  df = pd.read_csv(
+    data_files['perfume_avg_embedding.csv'],
+    index_col=0,
+    header=None,
+    encoding='utf-8'
+  )
+
+  df.index = df.index.astype(str)
+  df = df.apply(pd.to_numeric, errors='coerce')
+  df = df.groupby(level=0, sort=False).mean()
+  # Keep only perfumes with complete embeddings
+  df = df.dropna(axis=0)
+  keys = df.index.to_numpy()
+  matrix = df.to_numpy(dtype=np.float64)
+  positions = {key: i for i, key in enumerate(keys)}
+  
+  return keys, matrix, positions
+  
+@lru_cache(maxsize=1)
+def load_top_notes():
+
+  df = pd.read_csv(
+    data_files['perfume_top_notes.csv'],
+    index_col=0,
+    header=None
+  )
+
+  df.index = df.index.astype(str)
+
+  return df
+
+
+# ============================================================
+# 1. FETCH PERFUMES
+# ============================================================
 
 @anvil.server.callable
-def fetch_perfumes(user_brand:str=None) -> pd.DataFrame():
-  a = pd.read_csv(data_files['perfume_brand_model.csv'])
+def fetch_perfumes(user_brand=None):
+
+  perfumes = load_perfumes()[0]
+
   if user_brand is not None:
-    a = a[a['perfume_brand']==user_brand]
-  return a.to_dict('records')
+    perfumes = perfumes[
+      perfumes['perfume_brand'].eq(user_brand)
+      ]
+
+  return perfumes.to_dict('records')
 
 
-@anvil.server.callable
-def fetch_perfume_key(perfume_brand:str, perfume_model:str) -> str:
-  a = pd.read_csv(data_files['perfume_brand_model.csv'])
-  return a[(a['perfume_brand']==perfume_brand) &
-    (a['perfume_name']==perfume_model)]['fraterwork_ID'].iloc[0]
-
-@anvil.server.callable
-def dot_product_perfumes(user_perfume_key:str) -> pd.DataFrame():
-  embedding = pd.read_csv(data_files['perfume_avg_embedding.csv'], 
-                          index_col=0, header=None, encoding='utf-8')
-  embedding.index.name='perfume'
-  embedding = embedding.groupby('perfume').mean()
-  user_choice = embedding.loc[user_perfume_key] 
-  remaining_perfumes = embedding.drop(index=user_perfume_key)
-  scores = remaining_perfumes.dot(user_choice).sort_values(ascending=False)
-  result_df = scores.reset_index()
-  result_df.columns = ["perfume_key", "score"]
-  return result_df.to_dict("records")  
+# ============================================================
+# 2. FETCH PERFUME KEY
+# ============================================================
 
 @anvil.server.callable
-def best_perfume_info(top_perfume_key:str) -> pd.DataFrame():
-  top_notes = pd.read_csv(data_files['perfume_top_notes.csv'], 
-                          index_col=0, header=None)
-  perfume_models = pd.read_csv(data_files['perfume_brand_model.csv'], 
-                            index_col=0)
-  return {
-    'perfume_name': perfume_models.loc[top_perfume_key]['perfume_brand']+\
-                    ' ' + perfume_models.loc[top_perfume_key]['perfume_name'],
-    'description':  perfume_models.loc[top_perfume_key]['description'],
-    'top_notes': top_notes.loc[top_perfume_key].dropna().to_list()[0],
+def fetch_perfume_key(perfume_brand, perfume_model):
+
+  perfumes = load_perfumes()[0]
+
+  matches = perfumes[
+    perfumes['perfume_brand'].eq(perfume_brand) &
+    perfumes['perfume_name'].eq(perfume_model)
+    ]
+
+  if matches.empty:
+        raise ValueError("Perfume not found.")
+
+  return str(matches['fraterwork_ID'].iloc[0])
+
+
+# ============================================================
+# 3. DOT PRODUCT SIMILARITY
+# ============================================================
+
+@anvil.server.callable
+def dot_product_perfumes(user_perfume_key, top_n=5):
+
+  keys, matrix, positions = load_embeddings()
+
+  key = str(user_perfume_key)
+
+  if key not in positions:
+    raise ValueError("Perfume embedding not found.")
+
+  selected_index = positions[key]
+
+  # Calculate all dot products
+  scores = matrix @ matrix[selected_index]
+
+  # Exclude selected fragrance
+  scores[selected_index] = -np.inf
+
+  # Number of results
+  k = min(max(int(top_n), 0), len(scores) - 1)
+
+  if k == 0:
+    return []
+
+    # Find top k without sorting the entire database
+  indices = np.argpartition(scores, -k)[-k:]
+
+  # Sort only selected results
+  indices = indices[np.argsort(scores[indices])[::-1]]
+
+  return [
+    {
+      "perfume_key": str(keys[i]),
+      "score": round(float(scores[i]), 2)
     }
+    for i in indices
+  ]
+
+# ============================================================
+# 4. FETCH PERFUME INFORMATION
+# ============================================================
+
+@anvil.server.callable
+def best_perfume_info_batch(perfume_keys):
+
+  _, perfumes = load_perfumes()
+  top_notes = load_top_notes()
+
+  results = {}
+
+  for key in perfume_keys:
+
+    key = str(key)
+
+    if key not in perfumes.index:
+      continue
+
+    perfume = perfumes.loc[key]
+
+    if key in top_notes.index:
+      notes = top_notes.loc[key].dropna().to_list()
+    else:
+      notes = []
+
+    results[key] = {
+      'perfume_name': (
+        str(perfume['perfume_brand']) + ' ' +
+        str(perfume['perfume_name'])
+      ),
+      'description': perfume['description'],
+      'top_notes': notes[0] if notes else None
+    }
+
+  return results
