@@ -2,6 +2,7 @@
 from ._anvil_designer import Form1Template
 from anvil import *
 import anvil.server
+from anvil.files import data_files
 
 
 class Form1(Form1Template):
@@ -141,7 +142,7 @@ class Form1(Form1Template):
       self.description.content = best_info['description']
       self.top_notes.content = best_info['top_notes']
       self.score.text = f"{float(best['score']):.2f}"
-      self.best_match_image.source = app.Assets.default_perfume
+      self.best_match_image.source = data_files['']
       self.best_match_image.visible = True
       self.best_match_perfume.visible = True
       self.description.visible = True
