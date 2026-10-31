@@ -2,7 +2,6 @@
 from ._anvil_designer import Form1Template
 from anvil import *
 import anvil.server
-from anvil.files import data_files
 
 
 class Form1(Form1Template):
@@ -44,6 +43,7 @@ class Form1(Form1Template):
     self.description.visible = False
     self.top_notes.visible = False
     self.score.visible = False
+    self.purchase_link.visible = False
 
     # --------------------------------------------------------
     # BRAND SELECTION
@@ -79,6 +79,7 @@ class Form1(Form1Template):
     self.description.visible = False
     self.top_notes.visible = False
     self.score.visible = False
+    self.purchase_link.visible = False
 
     # --------------------------------------------------------
     # PERFUME SIMILARITY SEARCH
@@ -142,8 +143,12 @@ class Form1(Form1Template):
       self.description.content = best_info['description']
       self.top_notes.content = best_info['top_notes']
       self.score.text = f"{float(best['score']):.2f}"
-      self.best_match_image.source = data_files['']
+      self.best_match_image.source = URLMedia("_/theme/default_perfume.png")
+      self.purchase_link.url = (
+        "https://www.google.com/search?tbm=shop&q="
+        + best_info['perfume_name'])
       self.best_match_image.visible = True
+      self.purchase_link.visible = True
       self.best_match_perfume.visible = True
       self.description.visible = True
       self.top_notes.visible = True

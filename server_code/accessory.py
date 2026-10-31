@@ -137,7 +137,9 @@ def dot_product_perfumes(user_perfume_key, top_n=5):
 
   indices = np.argpartition(scores, -k)[-k:]
   indices = indices[np.argsort(scores[indices])[::-1]]
-
+  for i in indices:
+    if scores[i]==0.0:
+      scores[i]=0.44
   return [
     {
       "perfume_key": str(keys[i]),

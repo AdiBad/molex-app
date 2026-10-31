@@ -1,35 +1,35 @@
 color_scheme:
   colors:
-  - {color: '#8A6436', name: Primary}
+  - {color: '#FFB59B', name: Primary}
   - {color: '#76532D', name: Primary Dark}
-  - {color: '#E9D9BF', name: Primary Container}
-  - {color: '#FFFDF8', name: On Primary}
-  - {color: '#382D21', name: On Primary Container}
-  - {color: '#927D62', name: Secondary}
-  - {color: '#EFE7DB', name: Secondary Container}
-  - {color: '#FFFFFF', name: On Secondary}
-  - {color: '#362F27', name: On Secondary Container}
-  - {color: '#87715D', name: Tertiary}
-  - {color: '#E7DDD1', name: Tertiary Container}
-  - {color: '#FFFFFF', name: On Tertiary}
-  - {color: '#34291E', name: On Tertiary Container}
-  - {color: '#BA4C3E', name: Error}
-  - {color: '#F7F4EC', name: Background}
-  - {color: '#FFFEFA', name: Surface}
-  - {color: '#292722', name: On Background}
-  - {color: '#292722', name: On Surface}
-  - {color: '#F0ECE3', name: Surface Variant}
-  - {color: '#514B41', name: On Surface Variant}
-  - {color: '#D8D0C3', name: Outline}
-  - {color: 'rgba(41, 39, 34, 0.38)', name: On Disabled}
-  - {color: 'rgba(41, 39, 34, 0.12)', name: Disabled Container}
-  - {color: 'rgba(255, 253, 248, 0.08)', name: Light Overlay 1}
-  - {color: 'rgba(255, 253, 248, 0.12)', name: Light Overlay 2}
-  - {color: 'rgba(54, 47, 39, 0.08)', name: Dark Overlay 1}
-  - {color: 'rgba(54, 47, 39, 0.12)', name: Dark Overlay 2}
-  - {color: 'rgba(138, 100, 54, 0.05)', name: Primary Overlay 1}
-  - {color: 'rgba(138, 100, 54, 0.08)', name: Primary Overlay 2}
-  - {color: 'rgba(138, 100, 54, 0.11)', name: Primary Overlay 3}
+  - {color: '#7B2E0E', name: Primary Container}
+  - {color: '#5B1A00', name: On Primary}
+  - {color: '#FFDBCF', name: On Primary Container}
+  - {color: '#E7BDB0', name: Secondary}
+  - {color: '#5D4036', name: Secondary Container}
+  - {color: '#442A21', name: On Secondary}
+  - {color: '#FFDBCF', name: On Secondary Container}
+  - {color: '#D5C68E', name: Tertiary}
+  - {color: '#50461A', name: Tertiary Container}
+  - {color: '#393005', name: On Tertiary}
+  - {color: '#F2E2A7', name: On Tertiary Container}
+  - {color: '#FFB4AB', name: Error}
+  - {color: '#201A18', name: Background}
+  - {color: '#201A18', name: Surface}
+  - {color: '#EDE0DC', name: On Background}
+  - {color: '#EDE0DC', name: On Surface}
+  - {color: '#53433E', name: Surface Variant}
+  - {color: '#D8C2BB', name: On Surface Variant}
+  - {color: '#A08D86', name: Outline}
+  - {color: 'rgba(237, 224, 220, 0.38)', name: On Disabled}
+  - {color: 'rgba(237, 224, 220, 0.12)', name: Disabled Container}
+  - {color: 'rgba(255, 219, 207, 0.08)', name: Light Overlay 1}
+  - {color: 'rgba(255, 219, 207, 0.12)', name: Light Overlay 2}
+  - {color: 'rgba(255, 219, 207, 0.08)', name: Dark Overlay 1}
+  - {color: 'rgba(255, 219, 207, 0.12)', name: Dark Overlay 2}
+  - {color: 'rgba(255, 181, 155, 0.05)', name: Primary Overlay 1}
+  - {color: 'rgba(255, 181, 155, 0.08)', name: Primary Overlay 2}
+  - {color: 'rgba(255, 181, 155, 0.11)', name: Primary Overlay 3}
   preset_groups:
   - name: Colour Scheme
     options:

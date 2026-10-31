@@ -20,12 +20,15 @@
         <anvil-component type="Label" name="label_3" prop:text="Your closest match" prop:role="molex-eyebrow" container:grid_position="NHBOOE,KIRBEG "></anvil-component>
         <anvil-component type="RichText" name="best_match_perfume" prop:content="" prop:role="molex-match-name" prop:visible="false" container:grid_position="NHBOOE,KIRBEG "></anvil-component>
         <anvil-component type="Label" name="label_6" prop:text="Similarity score" prop:role="molex-score-label" container:grid_position="NHBOOE,KIRBEG "></anvil-component>
-        <anvil-component type="TextBox" name="score" prop:background="theme:Surface" prop:role="molex-match-score" prop:visible="false" container:grid_position="NHBOOE,KIRBEG "></anvil-component>
+        <anvil-component type="TextBox" name="score" prop:background="theme:Surface" prop:enabled="false" prop:role="molex-match-score" prop:visible="false" container:grid_position="NHBOOE,KIRBEG "></anvil-component>
         <anvil-component type="Label" name="label_2" prop:text="Fragrance profile" prop:role="molex-detail-label" container:grid_position="NHBOOE,KIRBEG "></anvil-component>
         <anvil-component type="RichText" name="description" prop:content="" prop:role="molex-match-description" prop:visible="false" container:grid_position="NHBOOE,KIRBEG FNZGJO,DLXDTD"></anvil-component>
         <anvil-component type="Label" name="label_5" prop:text="Top notes" prop:role="molex-detail-label" container:grid_position="NHBOOE,KIRBEG "></anvil-component>
         <anvil-component type="RichText" name="top_notes" prop:content="top_notes" prop:role="molex-match-notes" prop:visible="false" container:grid_position="NHBOOE,KIRBEG "></anvil-component>
-        <anvil-component type="Image" name="best_match_image" container:grid_position="NHBOOE,PDDHGC"></anvil-component>
+        <anvil-component type="FlowPanel" name="product_visual" prop:role="molex-product-visual" container:grid_position="NHBOOE,PDDHGC">
+          <anvil-component type="Image" name="best_match_image" prop:role="molex-match-image"></anvil-component>
+          <anvil-component type="Link" name="purchase_link" prop:role="molex-purchase-link" prop:text="Click to Purchase" prop:visible="false"></anvil-component>
+        </anvil-component>
       </anvil-component>
       <anvil-component type="Spacer" name="spacer_1" prop:height="24"></anvil-component>
       <anvil-component type="ColumnPanel" name="content_panel_2" prop:role="molex-recommendations">
