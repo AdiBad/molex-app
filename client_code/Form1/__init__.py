@@ -7,7 +7,7 @@ import anvil.server
 class Form1(Form1Template):
 
   DEFAULT_PERFUME = "orriswakan"
-  RESULTS_COUNT = 5
+  RESULTS_COUNT = 4
 
   def __init__(self, **properties):
     super().__init__(**properties)
@@ -37,6 +37,8 @@ class Form1(Form1Template):
 
     # Hide results
     self.repeating_panel_1.visible = False
+    self.xy_panel_1.visible = False
+    self.content_panel_2.visible = False
     self.best_match_perfume.visible = False
     self.description.visible = False
     self.top_notes.visible = False
@@ -70,6 +72,8 @@ class Form1(Form1Template):
   def _hide_results(self):
 
     self.repeating_panel_1.visible = False
+    self.xy_panel_1.visible = False
+    self.content_panel_2.visible = False
     self.best_match_perfume.visible = False
     self.description.visible = False
     self.top_notes.visible = False
@@ -103,6 +107,10 @@ class Form1(Form1Template):
 
     self._hide_results()
 
+    search_button = self.outlined_button_1
+    search_button.enabled = False
+    search_button.text = "Analyzing fragrance profile…"
+
     try:
       # Request only the five highest-scoring matches
       matched_perfumes = anvil.server.call(
@@ -133,11 +141,13 @@ class Form1(Form1Template):
       self.description.content = best_info['description']
       self.top_notes.content = best_info['top_notes']
       self.score.text = f"{float(best['score']):.2f}"
-
+      self.best_match_image.source = app.Assets.default_perfume
+      self.best_match_image.visible = True
       self.best_match_perfume.visible = True
       self.description.visible = True
       self.top_notes.visible = True
       self.score.visible = True
+      self.xy_panel_1.visible = True
 
       # Remaining four recommendations
       self.repeating_panel_1.items = [
@@ -150,8 +160,12 @@ class Form1(Form1Template):
       ]
 
       self.repeating_panel_1.visible = True
+      self.content_panel_2.visible = True
 
     except Exception as e:
       alert(
         f"Unable to retrieve fragrance recommendations: {e}"
       )
+    finally:
+      search_button.enabled = True
+      search_button.text = "Find similar fragrances"

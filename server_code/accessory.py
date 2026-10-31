@@ -101,7 +101,6 @@ def fetch_perfume_key(perfume_brand, perfume_model):
 # ============================================================
 # 3. DOT PRODUCT SIMILARITY
 # ============================================================
-
 @anvil.server.callable
 def dot_product_perfumes(user_perfume_key, top_n=5):
 
@@ -114,22 +113,29 @@ def dot_product_perfumes(user_perfume_key, top_n=5):
 
   selected_index = positions[key]
 
-  # Calculate all dot products
-  scores = matrix @ matrix[selected_index]
+  # Calculate vector magnitudes
+  norms = np.linalg.norm(matrix, axis=1)
 
-  # Exclude selected fragrance
+  if norms[selected_index] == 0:
+    raise ValueError("Selected perfume has an empty embedding.")
+
+    # Calculate cosine similarity
+  scores = (
+    matrix @ matrix[selected_index]
+  ) / (
+    norms * norms[selected_index]
+  )
+
+  # Exclude selected perfume
   scores[selected_index] = -np.inf
 
-  # Number of results
-  k = min(max(int(top_n), 0), len(scores) - 1)
+  # Select top N
+  k = min(max(int(top_n), 0), max(len(scores) - 1, 0))
 
   if k == 0:
     return []
 
-    # Find top k without sorting the entire database
   indices = np.argpartition(scores, -k)[-k:]
-
-  # Sort only selected results
   indices = indices[np.argsort(scores[indices])[::-1]]
 
   return [
